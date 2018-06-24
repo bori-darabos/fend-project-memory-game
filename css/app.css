@@ -1,242 +1,171 @@
 html {
-	box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-	box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 html,
 body {
-	width: 100%;
-	height: 100%;
-	margin: 0;
-	padding: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-	background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
-	font-family: 'Permanent Marker', cursive;
-	font-size: 16px;
+    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    font-family: 'Coda', cursive;
 }
 
 .container {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 h1 {
-	font-family: 'Gloria Hallelujah', cursive;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
 }
-
 
 /*
  * Styles for the deck of cards
  */
 
-
 .deck {
-	width: 85%;
-	background: #716F71;
-	padding: 1rem;
-	border-radius: 4px;
-	box-shadow: 8px 9px 26px 0 rgba(46, 61, 73, 0.5);
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-around;
-	align-items: center;
-	margin: 0 0 3em;
+    width: 660px;
+    min-height: 680px;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
 }
 
 .deck .card {
-	height: 3.7rem;
-	width: 3.7rem;
-	margin: 0.2rem 0.2rem;
-	background: #141214;;
-	font-size: 0;
-	color: #ffffff;
-	border-radius: 5px;
-	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    height: 125px;
+    width: 125px;
+    background: #2e3d49;
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
 .deck .card.open {
-	transform: rotateY(0);
-	background: #02b3e4;
-	cursor: default;
-	animation-name: flipInY;
-	-webkit-backface-visibility: visible !important;
-	backface-visibility: visible !important;
-	animation-duration: .75s;
+    transform: rotateY(0);
+    background: #02b3e4;
+    cursor: default;
 }
 
 .deck .card.show {
-	font-size: 33px;
+    font-size: 33px;
 }
 
 .deck .card.match {
-	cursor: default;
-	background: #02ccba;
-	font-size: 33px;
+    cursor: default;
+    background: #02ccba;
+    font-size: 33px;
 }
 
-.deck .card.disabled {
-	pointer-events: none;
-	opacity: 0.9;
+.deck .card.disable {
+    pointer-events: none;
 }
-
 
 /*
  * Styles for the Score Panel
  */
 
-
 .score-panel {
-	text-align: left;
-	margin-bottom: 10px;
+    text-align: left;
+    width: 345px;
+    margin-bottom: 10px;
 }
 
 .score-panel .stars {
-	margin: 0;
-	padding: 0;
-	display: inline-block;
-	margin: 0 5px 0 0;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
 }
 
 .score-panel .stars li {
-	list-style: none;
-	display: inline-block;
+    list-style: none;
+    display: inline-block;
 }
 
 .score-panel .restart {
-	float: right;
-	cursor: pointer;
+    float: right;
+    cursor: pointer;
 }
 
-.fa-star {
-	color: #FFD700;
+/* The Modal (background) */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgb(0, 0, 0);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
-.timer {
-	display: inline-block;
-	margin: 0 1rem;
+/* Modal Content */
+.modalContent {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
 }
 
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
 
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
 
-/*
- * Styles for game over modal
- */
+/*Responsiveness*/
 
-
- /*
-  * Styles for congratulations modal
-  */
-
-
- .overlay {
- 	position: fixed;
- 	top: 0;
- 	bottom: 0;
- 	left: 0;
- 	right: 0;
- 	background: rgba(0, 0, 0, 0.7);
- 	transition: opacity 500ms;
- 	visibility: hidden;
- 	opacity: 0;
- }
-
- .overlay:target {
- 	visibility: visible;
- 	opacity: 1;
- }
-
- .popup {
- 	margin: 70px auto;
- 	padding: 20px;
- 	background: #ffffff;
- 	border-radius: 5px;
- 	width: 85%;
- 	position: relative;
- 	transition: all 5s ease-in-out;
- 	font-family: 'Gloria Hallelujah', cursive;
- }
-
- .popup h2 {
- 	margin-top: 0;
- 	color: #333;
- 	font-family: Tahoma, Arial, sans-serif;
- }
-
- .popup .close {
- 	position: absolute;
- 	top: 20px;
- 	right: 30px;
- 	transition: all 200ms;
- 	font-size: 30px;
- 	font-weight: bold;
- 	text-decoration: none;
- 	color: #333;
- }
-
- .popup .close:hover {
- 	color: #E5F720;
- }
-
- .popup .content-1,
- .content-2 {
- 	max-height: 30%;
- 	overflow: auto;
- 	text-align: center;
- }
-
- .show {
- 	visibility: visible !important;
- 	opacity: 100 !important;
- }
-
- #starRating li {
- 	display: inline-block;
- }
-
-
-/****** Media queries
-***************************/
-
-
-@media (max-width: 320px) {
-	.deck {
-		width: 85%;
-	}
-
-
-
-/* For Tablets and larger screens
-****************/
-
-@media (min-width: 768px) {
-	.container {
-		font-size: 22px;
-	}
-
-	.deck {
-		width: 660px;
-		height: 680px;
-	}
-
-	.deck .card {
-		height: 125px;
-		width: 125px;
-	}
-
-	.endModal {
-		width: 60%;
-	}
+@media screen and (max-width: 700px) {
+  .deck {
+    width: 85%;
+    min-height: 55vh;
+  }
+  .deck .card {
+    width: 18vw;
+    height: 10vh;
+  }
+  .score-panel {
+    text-align: left;
+    width: 70vw;
+    height: 5vh;
+    padding-bottom: 8vh;
+  }
 }
