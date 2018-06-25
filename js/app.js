@@ -159,8 +159,6 @@ function isOver() {
    }
 
     // Show modal
-    const modal = document.getElementById("overlay");
-
     modal.classList.add("show");
 
     //showing move, rating, time on modal
@@ -168,6 +166,11 @@ function isOver() {
     const rating = document.getElementById("rating").innerHTML;
     const yourTime = document.getElementById("time").innerHTML;
 }
+
+function closer() {
+    modal.classList.remove("show")
+};
+
 
 /*
  * Add moves
