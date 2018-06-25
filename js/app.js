@@ -11,10 +11,35 @@ let matchedCards = [];
 let modal = document.getElementById("resultPanel")
 const resetbtn = document.getElementById("reset")
 
+
+/*
+ * Display the cards on the page
+ *   - shuffle the list of cards using the provided "shuffle" method below
+ *   - loop through each card and create its HTML
+ *   - add each card's HTML to the page
+ */
+
+// Shuffle function from http://stackoverflow.com/a/2450976
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
+
+    while (currentIndex !== 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+
+    return array;
+}
+
+
 /*
  * Setup the cards and the game
  */
 function init() {
+  cardsContainer = shuffle(cardsContainer);
   for(let i = 0; i < icons.length; i++) {
     const card = document.createElement("li");
     card.classList.add("card");
@@ -134,9 +159,9 @@ function isOver() {
     modal.classList.add("show");
 
     //showing move, rating, time on modal
-    document.getElementById("numberOfSteps").innerHTML = steps;
-    document.getElementById("rating").innerHTML = rating;
-    document.getElementById("time").innerHTML = yourTime;
+    const steps = document.getElementById("numberOfSteps").innerHTML;
+    const rating = document.getElementById("rating").innerHTML;
+    const yourTime = document.getElementById("time").innerHTML;
 }
 
 /*
@@ -184,6 +209,8 @@ function rating() {
 const timerContainer = document.querySelector(".timer");
 let liveTimer,
     totalSeconds = 0;
+    minute = 0;
+    second = 0;
 
 // Set the default value to the timer's container
 timerContainer.innerHTML = totalSeconds + 's';
@@ -256,27 +283,6 @@ function reset() {
 init();
 
 
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
-
-// Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
-
-    while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-
-    return array;
-}
 
 
 
