@@ -246,7 +246,7 @@ function stopTimer() {
  */
 const restartBtn = document.querySelector(".restart");
 restartBtn.addEventListener("click", function() {
-  restartBtn = reset(restartBtn);
+
   //Delete all cards
   cardsContainer.innerHTML = "";
 
@@ -254,6 +254,8 @@ restartBtn.addEventListener("click", function() {
 
   //Call 'init' to create new cards
   init();
+
+  restartBtn = reset(restartBtn);
 
   //Reset related variables
   matchedCards = [];
