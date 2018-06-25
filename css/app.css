@@ -114,7 +114,6 @@ h1 {
 
 /* The Modal (background) */
 .overlay {
-  display: none;
   position: fixed;
   z-index: 1;
   padding-top: 100px;
@@ -137,7 +136,7 @@ h1 {
 }
 
 /* The Close Button */
-.close {
+.reset {
   color: #aaaaaa;
   float: right;
   font-size: 28px;
