@@ -39,20 +39,26 @@ function shuffle(array) {
  * Setup the cards and the game
  */
 function init() {
-  
+
   for(let i = 0; i < icons.length; i++) {
+
     const card = document.createElement("li");
     card.classList.add("card");
     card.innerHTML = `<i class="${icons[i]}"></i>`;
     cardsContainer.appendChild(card);
 
-    card = shuffle(card);
+    icons = shuffle(icons);
+    
 
     //Add click event to each card
     click(card);
+    
+
 
     }
-}    
+}   
+
+
 
 //Timer Function
 function timer() {
