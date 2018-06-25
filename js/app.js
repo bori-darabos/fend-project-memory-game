@@ -35,6 +35,8 @@ function shuffle(array) {
 }
 
 
+icons = shuffle(icons);
+
 /*
  * Setup the cards and the game
  */
@@ -44,7 +46,7 @@ function init() {
 
     const card = document.createElement("li");
     card.classList.add("card");
-    icons = shuffle(icons);
+    
     card.innerHTML = `<i class="${icons[i]}"></i>`;
     cardsContainer.appendChild(card);
 
@@ -244,8 +246,11 @@ function stopTimer() {
  */
 const restartBtn = document.querySelector(".restart");
 restartBtn.addEventListener("click", function() {
+  restartBtn = reset(restartBtn);
   //Delete all cards
   cardsContainer.innerHTML = "";
+
+  icons = shuffle(icons);
 
   //Call 'init' to create new cards
   init();
@@ -271,6 +276,7 @@ function reset() {
     movesContainer.innerHTML = moves;
 
     // Reset `rating`
+    const star = '<li><i class="fa fa-star"></i></li>';
     starsContainer.innerHTML = star + star + star;
 
     stopTimer();
