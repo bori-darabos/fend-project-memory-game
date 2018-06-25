@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-const icons = ["fa fa-anchor","fa fa-anchor","fa fa-leaf","fa fa-leaf","fa fa-bicycle","fa fa-bicycle","fa fa-diamond","fa fa-diamond","fa fa-bomb","fa fa-bomb","fa fa-paper-plane-o","fa fa-paper-plane-o","fa fa-bolt","fa fa-bolt","fa fa-cube","fa fa-cube"]
+var icons = ["fa fa-anchor","fa fa-anchor","fa fa-leaf","fa fa-leaf","fa fa-bicycle","fa fa-bicycle","fa fa-diamond","fa fa-diamond","fa fa-bomb","fa fa-bomb","fa fa-paper-plane-o","fa fa-paper-plane-o","fa fa-bolt","fa fa-bolt","fa fa-cube","fa fa-cube"]
 
 const cardsContainer = document.querySelector(".deck");
 
@@ -41,9 +41,10 @@ function shuffle(array) {
 function init() {
 
   for(let i = 0; i < icons.length; i++) {
-    icons = shuffle(icons);
+
     const card = document.createElement("li");
     card.classList.add("card");
+    icons = shuffle(icons);
     card.innerHTML = `<i class="${icons[i]}"></i>`;
     cardsContainer.appendChild(card);
 
