@@ -39,7 +39,7 @@ function shuffle(array) {
 }
 
 
-icons = shuffle(icons);
+shuffle(icons);
 
 /*
  * Setup the cards and the game
@@ -163,6 +163,9 @@ function isOver() {
 function closer() {
   closeIcon.addEventListener('click', function(e){
   modal.style.visibility = 'hidden';
+    //Delete all cards
+  cardsContainer.innerHTML = "";
+
   init();
   reset();
 
@@ -246,14 +249,12 @@ restartBtn.addEventListener("click", function() {
   //Delete all cards
   cardsContainer.innerHTML = "";
 
-  icons = shuffle(icons);
+  shuffle(icons);
 
   //Call 'init' to create new cards
   init();
 
-  reset();
-
-  restartBtn = reset(restartBtn);
+  reset(restartBtn);
 
   //Reset related variables
   matchedCards = [];
