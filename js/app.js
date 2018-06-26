@@ -174,7 +174,9 @@ function isOver() {
     reset();
 
     stopTimer()
+
   });
+}
 }
 
 /*
@@ -197,7 +199,6 @@ function addMove() {
  * Rating
  */
 const starsContainer = document.querySelector(".stars");
-const star = `<li><i class="fa fa-star"></i></li>`;
 starsContainer.innerHTML = star + star + star;
 function rating() {
 
