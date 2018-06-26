@@ -117,6 +117,9 @@ function compare(currentCard, previousCard) {
 
             openedCards = [];
 
+            //Add new move
+            addMove();
+
             // Check if the game is Over
             isOver();
 
@@ -132,8 +135,6 @@ function compare(currentCard, previousCard) {
             openedCards = [];
         }
 
-    //Add new move
-    addMove();
 
 
 }
@@ -153,8 +154,8 @@ function isOver() {
 
     //showing move, rating, time on modal
     document.getElementById("numberOfSteps").innerHTML = moves;
-    document.getElementById("rating").innerHTML = star;
-    document.getElementById("time").innerHTML = liveTimer;
+    document.getElementById("rating").innerHTML = star + star + star;
+    document.getElementById("time").innerHTML = totalSeconds + "seconds in total";
 
     // closeicon on modal
     closer();
@@ -205,6 +206,8 @@ function rating() {
         starsContainer.innerHTML = star;
     }
 }
+
+
 
 /*
  * Timer
