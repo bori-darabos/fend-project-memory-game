@@ -8,8 +8,12 @@ const cardsContainer = document.querySelector(".deck");
 let openedCards = [];
 let matchedCards = [];
 
-let modal = document.getElementById("resultPanel")
-const resetbtn = document.getElementById("reset")
+let modal = document.getElementById("resultPanel");
+
+// close icon in modal
+let closeIcon = document.querySelector('.close');
+
+    const star = '<li><i class="fa fa-star"></i></li>';
 
 
 /*
@@ -41,12 +45,9 @@ icons = shuffle(icons);
  * Setup the cards and the game
  */
 function init() {
-
   for(let i = 0; i < icons.length; i++) {
-
     const card = document.createElement("li");
-    card.classList.add("card");
-    
+    card.classList.add("card"); 
     card.innerHTML = `<i class="${icons[i]}"></i>`;
     cardsContainer.appendChild(card);
 
@@ -152,25 +153,29 @@ function compare(currentCard, previousCard) {
  */
 function isOver() {
    if(matchedCards.length === icons.length) {
-     alert("Game Over");
 
     // Stop our timer
     stopTimer();
-   }
 
     // Show modal
     modal.classList.add("show");
 
     //showing move, rating, time on modal
-    const steps = document.getElementById("numberOfSteps").innerHTML;
-    const rating = document.getElementById("rating").innerHTML;
-    const yourTime = document.getElementById("time").innerHTML;
+    document.getElementById("numberOfSteps").innerHTML = moves;
+    document.getElementById("rating").innerHTML = star;
+    document.getElementById("time").innerHTML = timerContainer;
+   }
+
+    // closeicon on modal
+    function closer() {
+    closeIcon.addEventListener('click', function(e){
+    modal.classList.remove('show');
+    init();
+    reset();
+
+    stopTimer()
+  });
 }
-
-function closer() {
-    modal.classList.remove("show")
-};
-
 
 /*
  * Add moves
@@ -192,23 +197,17 @@ function addMove() {
  * Rating
  */
 const starsContainer = document.querySelector(".stars");
-starsContainer.innerHTML = `<li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>`;
+const star = `<li><i class="fa fa-star"></i></li>`;
+starsContainer.innerHTML = star + star + star;
 function rating() {
 
-  if(17 < moves < 25) {
-    starsContainer.innerHTML = `<li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>`;
-  } else if(moves > 25) { 
-    starsContainer.innerHTML =  `<li><i class="fa fa-star"></i></li>`;
-
-  } else {
-    starsContainer.innerHTML = `<li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>`;
-
-  }
+    if( moves < 10) {
+        starsContainer.innerHTML = star + star + star;
+    } else if( moves < 15) {
+        starsContainer.innerHTML = star + star;
+    } else {
+        starsContainer.innerHTML = star;
+    }
 }
 
 /*
@@ -260,15 +259,15 @@ restartBtn.addEventListener("click", function() {
   //Call 'init' to create new cards
   init();
 
+  reset();
+
   restartBtn = reset(restartBtn);
 
   //Reset related variables
   matchedCards = [];
   moves = 0;
   movesContainer.innerHTML = moves;
-  starsContainer.innerHTML = `<li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>
-            <li><i class="fa fa-star"></i></li>`;
+  starsContainer.innerHTML = star + star + star;;
 });
 
 /*
@@ -278,12 +277,13 @@ function reset() {
     // Empty the `matchedCards` array
     matchedCards = [];
 
+    modal.style.display = 'none'
+
     // Reset `moves`
     moves = 0;
     movesContainer.innerHTML = moves;
 
     // Reset `rating`
-    const star = '<li><i class="fa fa-star"></i></li>';
     starsContainer.innerHTML = star + star + star;
 
     stopTimer();
@@ -292,6 +292,11 @@ function reset() {
     timerContainer.innerHTML = totalSeconds + "s";
 }
 
+// For user to play again
+function playAgain() {
+  modal.classList.remove('show');
+  init();
+}
 
 //Start the game for the first time
 init();
