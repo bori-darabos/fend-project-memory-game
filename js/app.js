@@ -50,6 +50,7 @@ function init() {
     card.classList.add("card"); 
     card.innerHTML = `<i class="${icons[i]}"></i>`;
     cardsContainer.appendChild(card);
+    modal.style.visibility = 'hidden';
 
     //Add click event to each card
     click(card);
@@ -154,7 +155,7 @@ function isOver() {
     document.getElementById("rating").innerHTML = star;
     document.getElementById("time").innerHTML = liveTimer;
 
-        // closeicon on modal
+    // closeicon on modal
     closer();
    }
 }
@@ -281,12 +282,6 @@ function reset() {
     isFirstClick = true;
     totalSeconds = 0;
     timerContainer.innerHTML = totalSeconds + "s";
-}
-
-// For user to play again
-function playAgain() {
-  modal.style.visibility = 'hidden';
-  init();
 }
 
 //Start the game for the first time
