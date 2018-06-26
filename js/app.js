@@ -13,7 +13,7 @@ let modal = document.getElementById("resultPanel");
 // close icon in modal
 let closeIcon = document.querySelector('.close');
 
-    const star = '<li><i class="fa fa-star"></i></li>';
+let star = '<li><i class="fa fa-star"></i></li>';
 
 
 /*
@@ -56,17 +56,6 @@ function init() {
         }
 }   
 
-//Timer Function
-function timer() {
-  time++;
-  document.querySelector("#timer").innerHTML = time;
-}
-
-function addMessage() {
-  clearInterval(startTimer);
-  const message = document.getElementById('message');
-  message.innerText = `You completed the game in ${time} seconds. You achieved ${starsContainer} stars.`;
-}
 
 /*
  * Click event
@@ -158,25 +147,26 @@ function isOver() {
     stopTimer();
 
     // Show modal
-    modal.classList.add("show");
+    modal.style.visibility = 'visible';
 
     //showing move, rating, time on modal
     document.getElementById("numberOfSteps").innerHTML = moves;
     document.getElementById("rating").innerHTML = star;
-    document.getElementById("time").innerHTML = timerContainer;
+    document.getElementById("time").innerHTML = liveTimer;
    }
 
     // closeicon on modal
-    function closer() {
-    closeIcon.addEventListener('click', function(e){
-    modal.classList.remove('show');
-    init();
-    reset();
-
-    stopTimer()
-
-  });
+    closer();
 }
+
+function closer() {
+  closeIcon.addEventListener('click', function(e){
+  modal.style.visibility = 'hidden';
+  init();
+  reset();
+
+  stopTimer()
+  });
 }
 
 /*
@@ -295,7 +285,7 @@ function reset() {
 
 // For user to play again
 function playAgain() {
-  modal.classList.remove('show');
+  modal.style.visibility = 'hidden';
   init();
 }
 
