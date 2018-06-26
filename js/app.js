@@ -153,10 +153,10 @@ function isOver() {
     document.getElementById("numberOfSteps").innerHTML = moves;
     document.getElementById("rating").innerHTML = star;
     document.getElementById("time").innerHTML = liveTimer;
-   }
 
-    // closeicon on modal
+        // closeicon on modal
     closer();
+   }
 }
 
 function closer() {
