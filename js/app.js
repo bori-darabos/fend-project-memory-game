@@ -50,11 +50,12 @@ function init() {
     card.classList.add("card"); 
     card.innerHTML = `<i class="${icons[i]}"></i>`;
     cardsContainer.appendChild(card);
-    modal.style.visibility = 'hidden';
+
 
     //Add click event to each card
     click(card);
         }
+  modal.style.visibility = 'hidden';
 }   
 
 
