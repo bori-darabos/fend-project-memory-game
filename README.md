@@ -1,4 +1,4 @@
-Aim of Memory Game:
+Aim of Memory Game: 
 The game randomly shuffles the cards. A user wins once all cards have successfully been matched.
 
 How to play: 
