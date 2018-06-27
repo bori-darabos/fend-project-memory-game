@@ -1,6 +1,9 @@
 Aim  of Memory Game:
 The game randomly shuffles the cards. A user wins once all cards have successfully been matched.
 
+How to play:
+Click on one card to flip it and try to find its matching pair by clicking on any other card. If they do not match the cards flip back. If they match, they will remain open so the user can search another matching pair.
+Game is won if all of the 8 matching cards are correctly paired. 
 
 Features:
 Congratulations modal:
