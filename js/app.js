@@ -13,7 +13,7 @@ let modal = document.getElementById("resultPanel");
 // close icon in modal
 let closeIcon = document.querySelector('.close');
 
-let star = '<li><i class="fa fa-star"></i></li>';
+let star = '<i class="fa fa-star"></i>';
 
 
 /*
@@ -56,6 +56,7 @@ function init() {
     click(card);
         }
   modal.style.visibility = 'hidden';
+  openCards =[];
 }   
 
 
@@ -106,6 +107,10 @@ function click (card) {
  */
 function compare(currentCard, previousCard) {
 
+  //Add new move
+  addMove();
+
+
   //Matcher
   if(currentCard.innerHTML === previousCard.innerHTML){
 
@@ -117,8 +122,7 @@ function compare(currentCard, previousCard) {
 
             openedCards = [];
 
-            //Add new move
-            addMove();
+
 
             // Check if the game is Over
             isOver();
@@ -152,10 +156,13 @@ function isOver() {
     // Show modal
     modal.style.visibility = 'visible';
 
+    // declare star rating variable
+    var rating = document.querySelector(".stars").innerHTML;
+
     //showing move, rating, time on modal
     document.getElementById("numberOfSteps").innerHTML = moves;
-    document.getElementById("rating").innerHTML = star + star + star;
-    document.getElementById("time").innerHTML = totalSeconds + "seconds in total";
+    document.getElementById("rating").innerHTML = rating;
+    document.getElementById("time").innerHTML = totalSeconds + " seconds in total";
 
     // closeicon on modal
     closer();
@@ -217,6 +224,7 @@ let liveTimer,
     totalSeconds = 0;
     minute = 0;
     second = 0;
+    hour = 0;
 
 // Set the default value to the timer's container
 timerContainer.innerHTML = totalSeconds + 's';
@@ -240,7 +248,11 @@ function startTimer() {
 }
 
 function stopTimer() {
-    clearInterval(liveTimer);
+    minute = 0 ;
+    second =  0 ;
+    hour = 0;
+    timerContainer.innerHTML =  0 ; 
+    clearInterval(liveTimer) ;
 }
 
 
@@ -264,7 +276,10 @@ restartBtn.addEventListener("click", function() {
   matchedCards = [];
   moves = 0;
   movesContainer.innerHTML = moves;
-  starsContainer.innerHTML = star + star + star;;
+  starsContainer.innerHTML = star + star + star;
+
+  stopTimer();
+
 });
 
 /*
@@ -273,8 +288,6 @@ restartBtn.addEventListener("click", function() {
 function reset() {
     // Empty the `matchedCards` array
     matchedCards = [];
-
-    modal.style.display = 'none'
 
     // Reset `moves`
     moves = 0;
@@ -287,6 +300,7 @@ function reset() {
     isFirstClick = true;
     totalSeconds = 0;
     timerContainer.innerHTML = totalSeconds + "s";
+
 }
 
 //Start the game for the first time
