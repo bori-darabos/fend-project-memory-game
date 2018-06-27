@@ -160,7 +160,7 @@ h1 {
     min-height: 55vh;
   }
   .deck .card {
-    width: 18vw;
+    width: 24%;
     height: 10vh;
   }
   .score-panel {
