@@ -5,7 +5,8 @@ The game randomly shuffles the cards. A user wins once all cards have successful
 Click on one card to flip it and try to find its matching pair by clicking on any other card. If they do not match the cards flip back. If they match, they will remain open so the user can search another matching pair. Game is won if all of the 8 matching cards are correctly paired.
 
 ## Features:  
-### Congratulations modal: When a user wins the game, a modal appears to congratulate and ask if they want to play again. It tells the user how much time it took to win the game, and what the star rating was.
+### Congratulations modal:  
+When a user wins the game, a modal appears to congratulate and ask if they want to play again. It tells the user how much time it took to win the game, and what the star rating was.
 
 ### Restart Button:  
 A restart button allows the player to reset the game board, the timer, and the star rating.
