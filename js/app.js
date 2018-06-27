@@ -54,7 +54,8 @@ function init() {
 
     //Add click event to each card
     click(card);
-        }
+  }
+  shuffle(icons);
   modal.style.visibility = 'hidden';
   openCards =[];
 }   
