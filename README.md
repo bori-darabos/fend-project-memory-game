@@ -13,7 +13,7 @@ Restart Button:
 A restart button allows the player to reset the game board, the timer, and the star rating.
 
 Star Rating:
-The game displays a star rating (from 1-3) that reflects the player's performance. At the beginning of a game, it displays 3 stars. After 16 number of moves, it should change to a 2 star rating. After XXX more moves, it changes to a 1 star rating.
+The game displays a star rating (from 1-3) that reflects the player's performance. At the beginning of a game, it displays 3 stars. After 9 number of moves, it should change to a 2 star rating. After 24 moves, it changes to a 1 star rating.
 
 Timer:
 When the player starts a game, a displayed timer also starts. Once the player wins the game, the timer stops.
